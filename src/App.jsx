@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./App.module.scss";
 import { Canvas } from "@react-three/fiber";
@@ -12,6 +11,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export const App = () => {
   const container__circle = useRef(null);
   const circle = useRef(null);
+  const tshirtRef = useRef(null); // Référence pour le modèle Tshirt
+
+  // État pour suivre la position de la souris
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [isMouseInCircle, setIsMouseInCircle] = useState(false);
+
+  const handleMouseMove = (e) => {
+    setCursorPos({ x: e.pageX, y: e.pageY });
+  };
 
   useEffect(() => {
     gsap.fromTo(
@@ -44,7 +52,13 @@ export const App = () => {
             la blockchain et à la crypto KYC.
           </h2>
         </div>
-        <div ref={container__circle} className={styles.container__circle}>
+        <div
+          ref={container__circle}
+          className={styles.container__circle}
+          onMouseEnter={() => setIsMouseInCircle(true)}
+          onMouseLeave={() => setIsMouseInCircle(false)}
+          onMouseMove={handleMouseMove}
+        >
           <Canvas className={styles.canvas__pochette}>
             <directionalLight
               position={[5, 5, 5]}
@@ -61,9 +75,10 @@ export const App = () => {
               enableZoom={false}
               enableRotate={true}
               target={[0, 0, 0]}
+              autoRotate={true}
+              autoRotateSpeed={1}
             />
-
-            <Tshirt scale={6} position={[0, -7, 0]} />
+            <Tshirt ref={tshirtRef} scale={6} position={[0, -7, 0]} />
           </Canvas>
           <img
             ref={circle}
@@ -72,6 +87,22 @@ export const App = () => {
             alt=""
           />
         </div>
+        {isMouseInCircle && (
+          <div
+            className={styles.cursorFollow}
+            style={{
+              left: `${cursorPos.x - 30}px`, // Ajuste la position du curseur
+              top: `${cursorPos.y - 170}px`,
+            }}
+          >
+            <img
+              className={styles.verrouille}
+              src="/images/key.svg"
+              alt="key"
+            />
+          </div>
+        )}
+        {/* Curseur personnalisé */}
       </div>
     </div>
   );

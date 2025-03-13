@@ -79,6 +79,26 @@
       }
     }
 
+    .cursorFollow {
+      position: absolute;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      background-color: var(--dark-green);
+      transition: transform 1s ease-out;
+    }
+
+    .verrouille {
+      fill: var(--white);
+      width: 29px;
+      height: 29px;
+    }
     .container__circle {
       position: relative;
       height: 100vh;
@@ -86,6 +106,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
 
       .canvas__pochette {
         cursor: grab;
