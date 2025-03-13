@@ -1,22 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
-import ScrollReveal from "scrollreveal";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from "react";
 import styles from "./App.module.scss";
-import { initializeCanvasP5 } from "./CanvasP5";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Header from "./component/Header/Header";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  EffectComposer,
-  Vignette,
-  Bloom,
-  HueSaturation,
-  SMAA,
-} from "@react-three/postprocessing";
+import { EffectComposer, SMAA } from "@react-three/postprocessing";
 import Tshirt from "../T_shirt";
 
-const App = () => {
+export const App = () => {
   return (
     <div className={styles.app}>
       <Header />
@@ -63,5 +54,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
