@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+:root {
+  --soft-green: #c4ebdd;
+  --dark-green: #32706a;
+  --light-green: #6dfff3;
+  --white: #f8f7fe;
+
+  --font: "Inter", sans-serif;
+}
+
+.p5Canvas {
+  display: none;
+  position: absolute !important;
+}
