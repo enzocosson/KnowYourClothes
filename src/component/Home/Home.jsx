@@ -131,6 +131,8 @@ const Home = () => {
             />
           </div>
         )}
+
+        <div className={styles.confiance}></div>
       </div>
     </div>
   );
