@@ -123,7 +123,7 @@ export const App = () => {
             }
             style={{
               left: `${cursorPos.x - 30}px`,
-              top: `${cursorPos.y - 170}px`,
+              top: `${cursorPos.y - 160}px`,
             }}
           >
             <img

@@ -27,6 +27,7 @@
     justify-content: flex-start;
     align-items: center;
     z-index: 9;
+    padding-bottom: 40vh;
 
     .gradient {
       width: 100%;
@@ -109,7 +110,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
 
       .canvas__pochette {
         cursor: grab;
