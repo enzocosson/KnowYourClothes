@@ -1,6 +1,6 @@
-// src/pages/Home.jsx
+// src/pages/MarketPlace.jsx
 import React, { useEffect, useState, useRef } from "react";
-import styles from "./Home.module.scss"; // Assurez-vous que ce fichier existe ou ajustez-le
+import styles from "./MarketPlace.module.scss"; // Assurez-vous que ce fichier existe ou ajustez-le
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, SMAA } from "@react-three/postprocessing";
@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Home = () => {
+const MarketPlace = () => {
   const container__circle = useRef(null);
   const circle = useRef(null);
   const validation__circle = useRef(null);
@@ -136,4 +136,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MarketPlace;

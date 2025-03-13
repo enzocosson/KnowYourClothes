@@ -1,47 +1,40 @@
 // src/components/Header.jsx
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 function Header() {
-  const logo = useRef(null);
-  const login = useRef(null);
-  const signup = useRef(null);
-
   return (
     <header className={styles.header}>
-      <a ref={logo} className={`${styles.logo}`} to="/">
+      <Link className={styles.logo} to="/">
         Know<span>YourClothes</span>
-      </a>
+      </Link>
 
-      <div className={`${styles.links}`}>
-        <a ref={login} to="/Problème" className={`${styles.link}`}>
+      <nav className={styles.links}>
+        <Link to="/problème" className={styles.link}>
           Problème
-        </a>
-        <a ref={login} to="/Solution" className={`${styles.link}`}>
+        </Link>
+        <Link to="/solution" className={styles.link}>
           Solution
-        </a>
-        <a ref={login} to="/Solution" className={`${styles.link}`}>
-          BlockChain supporté
-        </a>
-        <a ref={login} to="/Solution" className={`${styles.link}`}>
+        </Link>
+        <Link to="/blockchain" className={styles.link}>
+          Blockchain supportée
+        </Link>
+        <Link to="/investisseurs" className={styles.link}>
           Investisseurs
-        </a>
-        <a ref={login} to="/Solution" className={`${styles.link}`}>
+        </Link>
+        <Link to="/faq" className={styles.link}>
           FAQ
-        </a>
-      </div>
+        </Link>
+      </nav>
 
-      <div className={`${styles.connexion} connexion`}>
-        <a ref={login} to="/login" className={`${styles.market} market`}>
-          Market Place
-        </a>
-        <a ref={login} to="/login" className={`${styles.login} login`}>
+      <div className={styles.connexion}>
+        <Link to="/marketplace" className={styles.market}>
+          Marketplace
+        </Link>
+        <Link to="/login" className={styles.login}>
           Connexion wallet
-        </a>
+        </Link>
       </div>
     </header>
   );
