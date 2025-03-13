@@ -1,175 +1,154 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: var(--font);
-  scroll-behavior: smooth;
+/* Variables de couleurs */
+:root {
+  --soft-green: #c4ebdd;
+  --dark-green: #32706a;
+  --light-green: #39e2d4;
+  --white: #f8f7fe;
 }
 
-.app {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  background-color: var(--soft-green);
+/* Contexte général du container */
+.marketPlaceContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 50px;
+  border-radius: 15px;
+}
+
+/* Sidebar - avec effet futuriste */
+.sidebar {
+  width: 20%;
+  background-color: var(--dark-green);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Titre de la Sidebar */
+.sidebarTitle {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: var(--light-green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Liens de la sidebar */
+.sidebarLinks {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebarLinks li {
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.sidebarLinks li a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.sidebarLinks li a:hover {
+  color: var(--light-green);
+}
+
+/* Liste des produits avec Flexbox */
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 75%;
   justify-content: flex-start;
-  align-items: center;
+}
+
+/* Carte des produits */
+.card {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: calc(33.33% - 30px);
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Canvas (modélisation du produit) */
+.cardCanvas {
   width: 100%;
-  height: auto;
+  height: 250px;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 15, 0.8) 0%,
+    rgba(0, 0, 30, 0.9) 100%
+  );
+  border-bottom: 2px solid var(--light-green);
+}
 
-  .couverture {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    z-index: 9;
-    padding-bottom: 40vh;
+/* Infos de la carte */
+.cardInfo {
+  padding: 20px;
+  text-align: center;
+  background: var(--dark-green);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
 
-    .gradient {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      background: linear-gradient(to bottom, #0a011f00, var(--purple));
-    }
+/* Titre de la carte */
+.cardInfo h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--white);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 
-    .bg {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -2;
-      object-fit: cover;
-    }
+/* Bouton sur la carte */
+.cardButton {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .title {
-      width: 1100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: var(--white);
-      margin-top: 10vh;
-      z-index: 100;
+.cardButton:hover {
+  background-color: var(--dark-green);
+  color: var(--light-green);
+  transform: scale(1.05);
+}
 
-      h1 {
-        font-size: 7rem;
-        font-family: var(--font1);
-        text-align: center;
-        font-weight: 900;
+/* Curseur personnalisé */
+.cursorFollow {
+  position: absolute;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--light-green), #ff00f7);
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
 
-        background: linear-gradient(150deg, #32706a, #5fd6cc);
-        color: transparent;
-        background-clip: text;
-        display: inline-block;
-      }
-      h2 {
-        width: 70%;
-        margin-top: 60px;
-        font-size: 1.3rem;
-        font-weight: 400;
-        text-align: center;
-        color: #32706a;
-      }
-    }
-
-    .cursorFollow {
-      position: absolute;
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
-      background-color: var(--dark-green);
-      transition: transform 1s ease-out;
-      z-index: 3;
-    }
-    .cursorFollow__active {
-      opacity: 0;
-    }
-    .verrouille {
-      fill: var(--white);
-      width: 29px;
-      height: 29px;
-    }
-    .container__circle {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .canvas__pochette {
-        cursor: grab;
-        position: absolute !important;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100vh;
-        z-index: 3;
-      }
-
-      .circle {
-        width: 800px;
-        z-index: 0;
-      }
-
-      .lock {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        z-index: 10;
-        fill: #32706a;
-        opacity: 0;
-        width: 200px;
-        transition: all 1.1s cubic-bezier(0.92, 0, 0.36, 0.97);
-      }
-
-      .lock__active {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-
-      .validation__circle {
-        position: absolute;
-        top: 52%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 0px;
-        height: 0px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle at 50% 50%,
-          #32706a,
-          #39e2d4,
-          #c4ebdd
-        );
-        z-index: 2;
-        box-shadow: 0px 0px 50px 10px #6dfff3;
-        opacity: 0;
-        transition: all 1s cubic-bezier(0.92, 0, 0.36, 0.97);
-      }
-
-      .active {
-        width: 1550px;
-        height: 1550px;
-        opacity: 1;
-      }
-    }
-  }
+.cursorImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
