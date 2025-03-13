@@ -7,18 +7,26 @@ import { EffectComposer, SMAA } from "@react-three/postprocessing";
 import Tshirt from "../T_shirt";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const App = () => {
   const container__circle = useRef(null);
   const circle = useRef(null);
-  const tshirtRef = useRef(null); // Référence pour le modèle Tshirt
+  const validation__circle = useRef(null);
+  const tshirtRef = useRef(null);
 
-  // État pour suivre la position de la souris
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isMouseInCircle, setIsMouseInCircle] = useState(false);
+  const [isValidationActive, setIsValidationActive] = useState(false);
 
   const handleMouseMove = (e) => {
     setCursorPos({ x: e.pageX, y: e.pageY });
+  };
+
+  const handleTshirtClick = () => {
+    setIsValidationActive(true);
   };
 
   useEffect(() => {
@@ -59,6 +67,20 @@ export const App = () => {
           onMouseLeave={() => setIsMouseInCircle(false)}
           onMouseMove={handleMouseMove}
         >
+          <img
+            className={`${styles.lock} ${
+              isValidationActive ? styles.lock__active : ""
+            }`}
+            src="/images/lock.png"
+            alt=""
+          />
+
+          <div
+            ref={validation__circle}
+            className={`${styles.validation__circle} ${
+              isValidationActive ? styles.active : ""
+            }`}
+          ></div>
           <Canvas className={styles.canvas__pochette}>
             <directionalLight
               position={[5, 5, 5]}
@@ -78,7 +100,12 @@ export const App = () => {
               autoRotate={true}
               autoRotateSpeed={1}
             />
-            <Tshirt ref={tshirtRef} scale={6} position={[0, -7, 0]} />
+            <Tshirt
+              ref={tshirtRef}
+              scale={6}
+              position={[0, -7, 0]}
+              onClick={handleTshirtClick}
+            />
           </Canvas>
           <img
             ref={circle}
@@ -89,9 +116,13 @@ export const App = () => {
         </div>
         {isMouseInCircle && (
           <div
-            className={styles.cursorFollow}
+            className={
+              isValidationActive
+                ? `${styles.cursorFollow} ${styles.cursorFollow__active}`
+                : styles.cursorFollow
+            }
             style={{
-              left: `${cursorPos.x - 30}px`, // Ajuste la position du curseur
+              left: `${cursorPos.x - 30}px`,
               top: `${cursorPos.y - 170}px`,
             }}
           >
@@ -102,7 +133,6 @@ export const App = () => {
             />
           </div>
         )}
-        {/* Curseur personnalisé */}
       </div>
     </div>
   );

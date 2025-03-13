@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.13.2",
     "@react-spring/three": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.120.5",
@@ -24,6 +25,7 @@
     "p5.brush": "^1.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-lottie": "^1.2.10",
     "react-router-dom": "^7.1.1",
     "react-three-fiber": "^6.0.13",
     "scrollreveal": "^4.0.9",
