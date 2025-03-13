@@ -115,6 +115,27 @@
   text-transform: uppercase;
 }
 
+/* Prix des articles */
+.price {
+  font-size: 18px;
+  color: var(--light-green);
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* Disponibilité */
+.available {
+  color: #39e2d4; /* Light green for available items */
+  font-weight: bold;
+  padding: 10px;
+}
+
+.soldOut {
+  color: #ff4d4d; /* Red for sold out items */
+  font-weight: bold;
+  padding: 10px;
+}
+
 /* Bouton sur la carte */
 .cardButton {
   background-color: var(--light-green);

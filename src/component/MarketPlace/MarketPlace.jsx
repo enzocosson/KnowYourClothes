@@ -1,4 +1,3 @@
-// src/pages/MarketPlace.jsx
 import React, { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -17,7 +16,7 @@ const MarketPlace = () => {
   const handleMouseEnter = () => setIsMouseInCircle(true);
   const handleMouseLeave = () => setIsMouseInCircle(false);
 
-  const renderCard = (title, id) => {
+  const renderCard = (title, price, available, id) => {
     return (
       <div className={styles.card} key={id}>
         <div className={styles.cardCanvas}>
@@ -45,6 +44,10 @@ const MarketPlace = () => {
         </div>
         <div className={styles.cardInfo}>
           <h3>{title}</h3>
+          <p className={styles.price}>Prix: {price} €</p>
+          <p className={available ? styles.available : styles.soldOut}>
+            {available ? "Disponible" : "Épuisé"}
+          </p>
           <button className={styles.cardButton}>Voir plus</button>
         </div>
       </div>
@@ -71,12 +74,12 @@ const MarketPlace = () => {
 
       {/* Right Content (Product Cards) */}
       <div className={styles.productList}>
-        {renderCard("T-shirt design 1", 1)}
-        {renderCard("T-shirt design 2", 2)}
-        {renderCard("T-shirt design 3", 3)}
-        {renderCard("T-shirt design 4", 4)}
-        {renderCard("T-shirt design 5", 5)}
-        {renderCard("T-shirt design 6", 6)}
+        {renderCard("T-shirt design 1", 29.99, true, 1)}
+        {renderCard("T-shirt design 2", 34.99, false, 2)}
+        {renderCard("T-shirt design 3", 39.99, true, 3)}
+        {renderCard("T-shirt design 4", 24.99, true, 4)}
+        {renderCard("T-shirt design 5", 49.99, false, 5)}
+        {renderCard("T-shirt design 6", 19.99, true, 6)}
       </div>
 
       {isMouseInCircle && (
