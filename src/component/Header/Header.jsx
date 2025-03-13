@@ -36,6 +36,9 @@ function Header() {
       </div>
 
       <div className={`${styles.connexion} connexion`}>
+        <a ref={login} to="/login" className={`${styles.market} market`}>
+          Market Place
+        </a>
         <a ref={login} to="/login" className={`${styles.login} login`}>
           Connexion wallet
         </a>

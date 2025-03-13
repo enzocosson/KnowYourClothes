@@ -39,6 +39,14 @@ a {
   align-items: center;
   gap: 0.5rem;
 
+  .market {
+    font-weight: 600;
+    color: var(--dark-green);
+    background-color: var(--light-green);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px #6dfff383;
+  }
+
   .login {
     background-color: #32706a;
     border-radius: 5px;
